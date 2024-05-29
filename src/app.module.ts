@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './modules/user/user.entity';
 import { config } from 'dotenv';
 import { ENVIRONMENT } from './common/configs/environment';
+import { WalletaddressModule } from './walletaddress/walletaddress.module';
+import { WalletAddressEntity } from './walletaddress/walletaddress.entity';
 config();
 
 @Module({
@@ -15,14 +17,11 @@ config();
     UserModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: ENVIRONMENT.DB.HOST,
-      port: ENVIRONMENT.DB.PORT,
-      username: ENVIRONMENT.DB.USERNAME,
-      password: ENVIRONMENT.DB.PASSWORD,
-      database: ENVIRONMENT.DB.NAME,
+      url: ENVIRONMENT.DB.URL,
       synchronize: true,
-      entities: [UserEntity],
+      entities: [UserEntity, WalletAddressEntity],
     }),
+    WalletaddressModule,
   ],
   controllers: [AppController, UserController],
   providers: [AppService, UserService],

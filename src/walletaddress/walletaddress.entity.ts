@@ -1,17 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('user')
-export class UserEntity {
+@Entity('walletaddress')
+export class WalletAddressEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ unique: true })
-  username: string;
-
-  @Column({ unique: false })
-  email: string;
-
-  @Column()
-
-  password: string;
+  address: string;
 }

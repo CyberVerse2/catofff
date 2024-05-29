@@ -8,11 +8,7 @@ export interface IEnvironment {
     ENV: string;
   };
   DB: {
-    HOST: string;
-    PORT: number;
-    USERNAME: string;
-    PASSWORD: string;
-    NAME: string;
+    URL:string
   };
 }
 
@@ -23,10 +19,6 @@ export const ENVIRONMENT: IEnvironment = {
     ENV: process.env.APP_ENV,
   },
   DB: {
-    HOST: process.env.DB_HOST,
-    PORT: Number(process.env.DB_PORT),
-    USERNAME: process.env.DB_USERNAME,
-    PASSWORD: process.env.DB_PASSWORD,
-    NAME: process.env.DB_NAME,
+    URL: process.env.DB_URL
   },
 };
